@@ -4,6 +4,8 @@ substitutions:
 canbus:
   - platform: mcp2515
     cs_pin: ${can_cs_pin}
+    mode: NORMAL
+    clock: 8MHZ
     bit_rate: 50kbps
     can_id: 0 # mandatory but we do not use it
     on_frame:
