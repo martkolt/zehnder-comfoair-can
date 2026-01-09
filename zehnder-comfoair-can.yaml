@@ -3,12 +3,11 @@ substitutions:
   filter_time: 5s
   filter_send_every: '1'
   filter_window_size: '3'
-  can_tx_pin: GPIO22
-  can_rx_pin: GPIO19
+  can_cs_pin: GPIO15
 
 packages:
   remote_package:
-    url: https://github.com/dan-s-github/zehnder-comfoair-can
+    url: https://github.com/martkolt/zehnder-comfoair-can
     ref: main
     files:
       - packages/canbus.yml
@@ -25,13 +24,13 @@ packages:
 esphome:
   name: ${name}
   friendly_name: Zehnder ComfoAir CAN
-  comment: Zehnder ComfoAir Q350
+  comment: Zehnder ComfoAir Q450
   min_version: '2025.11.0'
 
-esp32:
-  board: m5stack-atom
+esp8266:
+  board: nodemcuv3
   framework:
-    type: esp-idf
+    version: recommended
 
 # Enable logging
 logger:
@@ -41,7 +40,7 @@ logger:
 
 external_components:
   - components: [zehnder_comfoair_q]
-    source: github://dan-s-github/zehnder-comfoair-can
+    source: github://martkolt/zehnder-comfoair-can
     # source: components
 
 # See docs: https://github.com/michaelarnauts/aiocomfoconnect/blob/master/docs/PROTOCOL-PDO.md
@@ -57,7 +56,7 @@ zehnder_comfoair_q:
 # Enable Home Assistant API
 api:
   encryption:
-    key: "5wqUYCw5MwKhuU/c7KL2+JCCe9JIe57CmTuhYhQ/BYM="
+    key: ""
 
 # Allow Over-The-Air updates
 ota:
